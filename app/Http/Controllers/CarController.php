@@ -53,17 +53,13 @@ class CarController extends Controller
         return redirect()->route('cars.index')->with('success', 'Mobil berhasil ditambahkan.');
     }
 
-    public function show($id)
+    public function show(Car $car)
     {
-        $car = Car::findOrFail($id);
-
         return view('cars.show', compact('car'));
     }
 
-    public function edit($id)
+    public function edit(Car $car)
     {
-        $car = Car::findOrFail($id);
-
         return view('cars.edit', compact('car'));
     }
     public function update(Request $request, Car $car)
@@ -95,9 +91,8 @@ class CarController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Car $car)
     {
-        $car = Car::findOrFail($id);
         $car->delete();
 
         return redirect()->route('cars.index')->with('success', 'Mobil berhasil dihapus.');

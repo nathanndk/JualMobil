@@ -46,6 +46,7 @@
                     @foreach ($cars as $car)
                     <a href="{{ route('cars.show', $car->id) }}" class="flex items-center gap-4 rounded-lg border p-4 transition-all hover:bg-gray-100 dark:hover:bg-gray-800">
                         <img class="w-1/4 h-sm" src="{{ asset('images/'.$car->photo) }}" alt="{{ $car->brand }} {{ $car->model }}">
+
                         <div class="grid gap-1.5">
                             <h2 class="font-semibold text-lg">{{ $car->model }}</h2>
                             <p class="text-sm leading-none">{{ $car->type }}</p>

@@ -12,7 +12,7 @@
 <body>
     <div class="container mx-auto p-8">
         <div class="max-w-lg mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
-            <img class="w-full h-auto" src="{{ asset('images/'.$car->photo) }}" alt="{{ $car->brand }} {{ $car->model }}">
+            <img class="w-full h-auto" src="{{ asset('cars/'.$car->photo) }}" alt="{{ $car->brand }} {{ $car->model }}">
             <div class="p-4">
                 <h2 class="text-xl font-semibold mb-2">{{ $car->brand }} {{ $car->model }}</h2>
                 <p class="text-gray-700 mb-2"><strong>Year:</strong> {{ $car->year }}</p>
