@@ -9,11 +9,25 @@ use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $car = Car::all();
-        return view('cars.index', ['cars' => $car]);
+        $car = Car::orderBy('created_at', 'DESC');
+
+
+
+        if ($request->has('search')) {
+            $searchTerm = $request->get('search');
+            $car->where(function ($query) use ($searchTerm) {
+                $query->where('brand', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('model', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        $cars = $car->get();
+
+        return view('cars.index', ['cars' => $cars]);
     }
+
 
     public function create()
     {
@@ -65,12 +79,12 @@ class CarController extends Controller
     public function update(Request $request, Car $car)
     {
         $request->validate([
-            'brand' => 'required',
-            'model' => 'required',
-            'year' => 'required|numeric',
-            'price' => 'required|numeric',
-            'description' => 'required',
-            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'brand' => 'required',
+            // 'model' => 'required',
+            // 'year' => 'required|numeric',
+            // 'price' => 'required|numeric',
+            // 'description' => 'required',
+            // 'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $car->fill($request->except('photo'));
