@@ -17,6 +17,7 @@ class CarController extends Controller
 
         if ($request->has('search')) {
             $searchTerm = $request->get('search');
+
             $car->where(function ($query) use ($searchTerm) {
                 $query->where('brand', 'like', '%' . $searchTerm . '%')
                     ->orWhere('model', 'like', '%' . $searchTerm . '%');
