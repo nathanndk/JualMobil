@@ -14,7 +14,7 @@ class CreateCarsTable extends Migration
             $table->string('brand');
             $table->string('model');
             $table->integer('year');
-            $table->decimal('price', 10, 2);
+            $table->integer('price');
             $table->text('description')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
