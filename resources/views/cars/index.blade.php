@@ -28,7 +28,7 @@
             <div class="border rounded-lg p-4">
                 <div class="flex items-center gap-4">
                     <h1 class="font-semibold text-lg md:text-2xl">Cars</h1>
-                    <a href="/cars/create" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-auto">+</a>
+                    <a href="/cars/create" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded ml-auto">+</a>
                 </div>
                 <div class="grid gap-4 mt-4">
                   @include('cars.shared.car_card')

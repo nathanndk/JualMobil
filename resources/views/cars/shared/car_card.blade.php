@@ -9,7 +9,7 @@
                 <p class="text-base leading-tight">{{ $car->brand }}</p>
             </div>
             <div>
-                <p class="font-semibold text-lg">${{ $car->price }}</p>
+                <p class="font-semibold text-lg">${{ number_format($car->price) }}</p>
             </div>
             <div class="absolute bottom-2 right-2 text-xs text-gray-400">
                 {{ $car->created_at->diffForHumans() }}
