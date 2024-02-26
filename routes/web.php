@@ -20,9 +20,9 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', [DashboardController::class, 'index']);
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -30,6 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('cars', CarController::class);
+Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
+
+Route::get('/cars/{car}', [CarController::class, 'show'])->name('cars.show');
+
+Route::resource('cars', CarController::class)->except(['index', 'show'])->middleware('auth');
 
 require __DIR__ . '/auth.php';
