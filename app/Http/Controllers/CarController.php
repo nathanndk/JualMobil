@@ -14,7 +14,6 @@ class CarController extends Controller
         $car = Car::orderBy('created_at', 'DESC');
 
 
-
         if ($request->has('search')) {
             $searchTerm = $request->get('search');
 
